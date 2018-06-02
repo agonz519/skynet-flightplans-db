@@ -8,7 +8,7 @@ router.get('/api/flight-plans', (req, res) => {
   flightPlan.selectAll((data) => {
     let flightPlansObject = { flightPlans: data }; //NEED TO FIX THIS!!!!
     console.log(data);
-    return flightPlansObject;
+    res.json(flightPlansObject);
     // res.render("index", flightPlansObject);
   });
 });
