@@ -15,7 +15,7 @@ const objToSql = (object) => {
     let value = object[key];
     if (Object.hasOwnProperty.call(object, key)) {
       if (typeof value === 'string' && value.indexOf(' ') >= 0) {
-        value = `'${value}'`;
+        value = `"${value}"`;
       }
       arr.push(`${key}=${value}`);
     }
