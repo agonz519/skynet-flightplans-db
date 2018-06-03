@@ -6,6 +6,11 @@ const flightPlan = {
       cb(res);
     });
   },
+  selectAllFlightPlanActions: (columnNames, joinedOn, condition, orderedBy, cb) => {
+    orm.selectAllFlightPlanActions('flight_plans', 'flight_plan_actions', columnNames, joinedOn, condition, orderedBy, (res) => {
+      cb(res);
+    });
+  },
   insertOneFlightPlan: (columnNames, columnValues, cb) => {
     orm.insertOneFlightPlan('flight_plans', columnNames, columnValues, (res) => {
       cb(res);

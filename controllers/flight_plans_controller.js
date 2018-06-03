@@ -12,6 +12,26 @@ router.get('/api/flight-plans', (req, res) => {
   });
 });
 
+router.get('/api/all-flight-plans-and-actions', (req, res) => {
+  let columnNames = [
+    'flight_plan_actions.flight_plan_id',
+    'flight_plans.flight_plan_name',
+    'flight_plan_actions.action_order_num',
+    'flight_plan_actions.action_type',
+    'flight_plan_actions.action_param',
+    'flight_plan_actions.action_wait',
+    'flight_plan_actions.action_active'
+  ];
+  let joinedOn = 'flight_plans.flight_plan_id = flight_plan_actions.flight_plan_id';
+  let condition = 'flight_plans.flight_plan_active = 1 AND flight_plan_actions.action_active = 1';
+  let orderedBy = 'flight_plan_id, action_order_num';
+  flightPlan.selectAllFlightPlanActions(columnNames, joinedOn, condition, orderedBy, (data) => {
+    let flightPlansObject = { flightPlans: data };
+    console.log(data);
+    res.json(flightPlansObject);
+  });
+});
+
 router.post('/api/new-flight-plan', (req, res) => {
   flightPlan.insertOneFlightPlan([
     'flight_plan_name'
