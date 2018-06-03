@@ -39,6 +39,16 @@ const orm = {
       cb(res);
     });
   },
+  selectOneFlightPlanActions: (tableName1, tableName2, columnNames, joinedOn, condition, orderedBy, cb) => {
+    let columnNameString = columnNames.toString();
+    let queryString = `SELECT ${columnNameString} FROM ${tableName1} LEFT JOIN ${tableName2} ON (${joinedOn}) `;
+    queryString += `WHERE ${condition} ORDER BY ${orderedBy};`;
+    console.log(queryString);
+    connection.query(queryString, (err, res) => {
+      if (err) throw err;
+      cb(res);
+    });
+  },
   selectAllFlightPlanActions: (tableName1, tableName2, columnNames, joinedOn, condition, orderedBy, cb) => {
     let columnNameString = columnNames.toString();
     let queryString = `SELECT ${columnNameString} FROM ${tableName1} LEFT JOIN ${tableName2} ON (${joinedOn}) `;
