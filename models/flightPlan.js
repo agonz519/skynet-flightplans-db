@@ -25,11 +25,16 @@ const flightPlan = {
     orm.updateOneFlightPlanAction('flight_plan_actions', objectColumnValues, condition, (res) =>{
       cb(res);
     });
-    // },
-    // delete: (condition, cb) => {
-    //   orm.delete("flight_plans", condition, (res) => {
-    //     cb(res);
-    //   });
+  },
+  deleteFlightPlan: (condition, cb) => {
+    orm.deleteFlightPlan("flight_plans", condition, (res) => {
+      cb(res);
+    });
+  },
+  deleteFlightPlanAction: (condition, cb) => {
+    orm.deleteFlightPlanAction("flight_plan_actions", condition, (res) => {
+      cb(res);
+    });
   }
 };
 

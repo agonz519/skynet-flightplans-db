@@ -72,15 +72,32 @@ router.put('/api/update-flight-plan-action/:id', (req, res) => {
   });
 });
 
-// router.delete("/api/delete-burger/:id", (req, res) => {
-//   let condition = `id = ${req.params.id}`;
-//   burger.delete(condition, (result) => {
-//     if (result.affectedRows === 0) {
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+router.put('/api/delete-flight-plan/:id', (req, res) => {
+  let condition = `flight_plan_id = ${req.params.id}`;
+  console.log('condition', condition);
+  flightPlan.deleteFlightPlan({
+    flight_plan_active: 0
+  }, condition, (result) => {
+    if (result.changedRows === 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
+
+router.put('/api/delete-flight-plan-action/:id', (req, res) => {
+  let condition = `action_id = ${req.params.id}`;
+  console.log('condition', condition);
+  flightPlan.deleteFlightPlanAction({
+    action_active: 0
+  }, condition, (result) => {
+    if (result.changedRows === 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
 
 module.exports = router;
