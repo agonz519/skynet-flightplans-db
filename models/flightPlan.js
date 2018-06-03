@@ -26,13 +26,13 @@ const flightPlan = {
       cb(res);
     });
   },
-  deactivateFlightPlan: (condition, cb) => {
-    orm.deactivateFlightPlan("flight_plans", condition, (res) => {
+  deactivateFlightPlan: (objectColumnValues, condition, cb) => {
+    orm.deactivateFlightPlan("flight_plans", objectColumnValues, condition, (res) => {
       cb(res);
     });
   },
-  deactivateFlightPlanAction: (condition, cb) => {
-    orm.deactivateFlightPlanAction("flight_plan_actions", condition, (res) => {
+  deactivateFlightPlanAction: (objectColumnValues, condition, cb) => {
+    orm.deactivateFlightPlanAction("flight_plan_actions", objectColumnValues, condition, (res) => {
       cb(res);
     });
   }
