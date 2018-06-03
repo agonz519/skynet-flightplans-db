@@ -66,7 +66,16 @@ const orm = {
       cb(result);
     });
   },
-  updateOne: (tableName, objectColumnValues, condition, cb) => {
+  updateOneFlightPlan: (tableName, objectColumnValues, condition, cb) => {
+    let objectToSQL = objToSql(objectColumnValues);
+    let queryString = `UPDATE ${tableName} SET ${objectToSQL} WHERE ${condition};`;
+    console.log(queryString);
+    connection.query(queryString, (err, result) => {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+  updateOneFlightPlanAction: (tableName, objectColumnValues, condition, cb) => {
     let objectToSQL = objToSql(objectColumnValues);
     let queryString = `UPDATE ${tableName} SET ${objectToSQL} WHERE ${condition};`;
     console.log(queryString);

@@ -16,8 +16,13 @@ const flightPlan = {
       cb(res);
     });
   },
-  updateOne: (objectColumnValues, condition, cb) => {
-    orm.updateOne('flight_plans', objectColumnValues, condition, (res) =>{
+  updateOneFlightPlan: (objectColumnValues, condition, cb) => {
+    orm.updateOneFlightPlan('flight_plans', objectColumnValues, condition, (res) =>{
+      cb(res);
+    });
+  },
+  updateOneFlightPlanAction: (objectColumnValues, condition, cb) => {
+    orm.updateOneFlightPlanAction('flight_plan_actions', objectColumnValues, condition, (res) =>{
       cb(res);
     });
     // },
