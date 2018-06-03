@@ -6,9 +6,9 @@ const flightPlan = require('../models/flightPlan');
 
 router.get('/api/flight-plans', (req, res) => {
   flightPlan.selectAll((data) => {
-    let flightPlansObject = { flightPlans: data }; //NEED TO FIX THIS!!!!
+    let flightPlansObject = { flightPlans: data };
     console.log(data);
-    res.render("index", flightPlansObject);
+    res.json(flightPlansObject);
   });
 });
 
@@ -22,15 +22,23 @@ router.post('/api/new-flight-plan', (req, res) => {
   });
 });
 
-// router.post('/api/new-flight-plan-action', (req, res) => {
-//   flightPlan.insertOne([
-//     'flight_plan_name'
-//   ], [
-//     req.body.flight_plan_name
-//   ], (result) => {
-//     res.json({ id: result.insertId });
-//   });
-// });
+router.post('/api/new-flight-plan-action', (req, res) => {
+  flightPlan.insertOne([
+    'flight_plan_id',
+    'action_order_num',
+    'action_type',
+    'action_param',
+    'action_wait'
+  ], [
+    req.body.flight_plan_id,
+    req.body.action_order_num,
+    req.body.action_type,
+    req.body.action_param,
+    req.body.action_wait
+  ], (result) => {
+    res.json({ id: result.insertId });
+  });
+});
 
 // router.put('/api/update-burger/:id', (req, res) => {
 //   let condition = `id = ${req.params.id}`;
