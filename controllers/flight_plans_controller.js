@@ -72,11 +72,11 @@ router.put('/api/update-flight-plan-action/:id', (req, res) => {
   });
 });
 
-router.put('/api/delete-flight-plan/:id', (req, res) => {
+router.put('/api/deactivate-flight-plan/:id', (req, res) => {
   let condition = `flight_plan_id = ${req.params.id}`;
   console.log('condition', condition);
-  flightPlan.deleteFlightPlan({
-    flight_plan_active: 0
+  flightPlan.deactivateFlightPlan({
+    flight_plan_active: req.body.flight_plan_active
   }, condition, (result) => {
     if (result.changedRows === 0) {
       return res.status(404).end();
@@ -86,11 +86,11 @@ router.put('/api/delete-flight-plan/:id', (req, res) => {
   });
 });
 
-router.put('/api/delete-flight-plan-action/:id', (req, res) => {
+router.put('/api/deactivate-flight-plan-action/:id', (req, res) => {
   let condition = `action_id = ${req.params.id}`;
   console.log('condition', condition);
-  flightPlan.deleteFlightPlanAction({
-    action_active: 0
+  flightPlan.deactivateFlightPlanAction({
+    action_active: req.body.action_active
   }, condition, (result) => {
     if (result.changedRows === 0) {
       return res.status(404).end();

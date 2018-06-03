@@ -84,7 +84,7 @@ const orm = {
       cb(result);
     });
   },
-  deleteFlightPlan: (tableName, objectColumnValues, condition, cb) => {
+  deactivateFlightPlan: (tableName, objectColumnValues, condition, cb) => {
     let objectToSQL = objToSql(objectColumnValues);
     let queryString = `UPDATE ${tableName} SET ${objectToSQL} WHERE ${condition};`;
     console.log(queryString);
@@ -93,7 +93,7 @@ const orm = {
       cb(result);
     });
   },
-  deleteFlightPlanAction: (tableName, objectColumnValues, condition, cb) => {
+  deactivateFlightPlanAction: (tableName, objectColumnValues, condition, cb) => {
     let objectToSQL = objToSql(objectColumnValues);
     let queryString = `UPDATE ${tableName} SET ${objectToSQL} WHERE ${condition};`;
     console.log(queryString);

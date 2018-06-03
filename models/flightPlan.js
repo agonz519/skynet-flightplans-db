@@ -26,24 +26,16 @@ const flightPlan = {
       cb(res);
     });
   },
-  deleteFlightPlan: (condition, cb) => {
-    orm.deleteFlightPlan("flight_plans", condition, (res) => {
+  deactivateFlightPlan: (condition, cb) => {
+    orm.deactivateFlightPlan("flight_plans", condition, (res) => {
       cb(res);
     });
   },
-  deleteFlightPlanAction: (condition, cb) => {
-    orm.deleteFlightPlanAction("flight_plan_actions", condition, (res) => {
+  deactivateFlightPlanAction: (condition, cb) => {
+    orm.deactivateFlightPlanAction("flight_plan_actions", condition, (res) => {
       cb(res);
     });
   }
 };
-
-// const flightAction = {
-//   selectAll: (cb) => {
-//     orm.selectAll('flight_plan_actions', (res) => {
-//       cb(res);
-//     });
-//   },
-// };
 
 module.exports = flightPlan;
