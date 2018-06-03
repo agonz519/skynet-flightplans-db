@@ -13,7 +13,7 @@ router.get('/api/flight-plans', (req, res) => {
 });
 
 router.post('/api/new-flight-plan', (req, res) => {
-  flightPlan.insertOne([
+  flightPlan.insertOneFlightPlan([
     'flight_plan_name'
   ], [
     req.body.flight_plan_name
@@ -23,7 +23,7 @@ router.post('/api/new-flight-plan', (req, res) => {
 });
 
 router.post('/api/new-flight-plan-action', (req, res) => {
-  flightPlan.insertOne([
+  flightPlan.insertOneFlightPlanAction([
     'flight_plan_id',
     'action_order_num',
     'action_type',

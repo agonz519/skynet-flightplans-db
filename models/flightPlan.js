@@ -6,8 +6,13 @@ const flightPlan = {
       cb(res);
     });
   },
-  insertOne: (columnNames, columnValues, cb) => {
-    orm.insertOne('flight_plans', columnNames, columnValues, (res) => {
+  insertOneFlightPlan: (columnNames, columnValues, cb) => {
+    orm.insertOneFlightPlan('flight_plans', columnNames, columnValues, (res) => {
+      cb(res);
+    });
+  },
+  insertOneFlightPlanAction: (columnNames, columnValues, cb) => {
+    orm.insertOneFlightPlanAction('flight_plan_actions', columnNames, columnValues, (res) => {
       cb(res);
     });
   },

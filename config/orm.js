@@ -46,7 +46,17 @@ const orm = {
   //     cb(res);
   //   });
   // },
-  insertOne: (tableName, columnNames, columnValues, cb) => {
+  insertOneFlightPlan: (tableName, columnNames, columnValues, cb) => {
+    let columnNameString = columnNames.toString();
+    let questionMarks = printQuestionMarks(columnValues.length);
+    let queryString = `INSERT INTO ${tableName} (${columnNameString}) VALUES (${questionMarks});`;
+    console.log(queryString);
+    connection.query(queryString, columnValues, (err, result) => {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+  insertOneFlightPlanAction: (tableName, columnNames, columnValues, cb) => {
     let columnNameString = columnNames.toString();
     let questionMarks = printQuestionMarks(columnValues.length);
     let queryString = `INSERT INTO ${tableName} (${columnNameString}) VALUES (${questionMarks});`;
