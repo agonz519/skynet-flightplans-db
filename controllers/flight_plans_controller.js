@@ -14,6 +14,7 @@ router.get('/api/flight-plans', (req, res) => {
 
 router.get('/api/flight-plan-actions/:id', (req, res) => {
   let columnNames = [
+    'flight_plan_actions.action_id',
     'flight_plan_actions.flight_plan_id',
     'flight_plans.flight_plan_name',
     'flight_plan_actions.action_order_num',
